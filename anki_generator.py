@@ -1,5 +1,5 @@
 """Function for creating Anki packages."""
-
+import os
 import genanki
 import random
 from typing import List, Dict
@@ -49,6 +49,12 @@ def create_anki_package(
   Returns:
       str: Path to the created Anki package
   """
+
+  output_dir = "output"
+  os.makedirs(output_dir, exist_ok=True)
+
+  if not output_file.startswith(output_dir):
+    output_file = os.path.join(output_dir, output_file)
 
   model = create_anki_model()
 
